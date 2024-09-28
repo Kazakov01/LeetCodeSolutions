@@ -8,7 +8,8 @@ public class SolutionTest {
 
     @Test
     void example1 () {
-        Solution sol = new Solution();
+//        Solution sol = new Solution();
+        SolutionAlt sol = new SolutionAlt();
         TreeNode trlp = new TreeNode(2, null, null);
         TreeNode trrp = new TreeNode(3, null, null);
         TreeNode trp = new TreeNode(1, trlp, trrp);
@@ -22,7 +23,8 @@ public class SolutionTest {
 
     @Test
     void example2 () {
-        Solution sol = new Solution();
+//        Solution sol = new Solution();
+        SolutionAlt2 sol = new SolutionAlt2();
         TreeNode trlp = new TreeNode(2, null, null);
         TreeNode trp = new TreeNode(1, trlp, null);
 
@@ -35,13 +37,18 @@ public class SolutionTest {
     @Test
     void example3 () {
         Solution sol = new Solution();
-        TreeNode trlp = new TreeNode(2, null, null);
+        assert sol.isSameTree(null, null);
+    }
+
+    @Test
+    void example4 () {
+        SolutionAlt sol = new SolutionAlt();
+        TreeNode trlp = new TreeNode(3, null, null);
         TreeNode trp = new TreeNode(1, trlp, null);
 
         TreeNode trrq = new TreeNode(2, null, null);
         TreeNode trq = new TreeNode(1, null, trrq);
-
-        assert sol.isSameTree(null, null);
+        assert !sol.isSameTree(trp, null);
     }
 
 }
