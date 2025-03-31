@@ -17,22 +17,28 @@ class SolutionAlt {
         Deque<Integer> sumStack = new ArrayDeque<>();
         stack.push(root);
         sumStack.push(root.val);
+        int sum = 0;
 
         while (!stack.isEmpty()) {
             TreeNode node = stack.pop();
+            sum += sumStack.pop();
 
             if (node.left != null) {
                 stack.push(node.left);
-                sumStack.push(node.val);
+                sumStack.push(node.left.val + sum);
             }
 
             if (node.right != null) {
                 stack.push(node.right);
-                sumStack.push(node.val);
+                sumStack.push(node.right.val + sum);
             }
 
             if (node.right == null && node.left == null) {
-
+                if (sum == targetSum) {
+                    return true;
+                } else {
+                    sum = sumStack.peekFirst();
+                }
             }
         }
         return false;
