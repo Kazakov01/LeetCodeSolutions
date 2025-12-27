@@ -29,56 +29,28 @@ public class BadSolution {
         String pattern8 = "he";
         String s8 = "unit";
 
-        System.out.println(wordPattern(pattern8, s8));
+        System.out.println("1 " + wordPattern(pattern1, s1));
+        System.out.println("2 " + wordPattern(pattern2, s2));
+        System.out.println("3 " + wordPattern(pattern3, s3));
+        System.out.println("4 " + wordPattern(pattern4, s4));
+        System.out.println("5 " + wordPattern(pattern5, s5));
+        System.out.println("6 " + wordPattern(pattern6, s6));
+        System.out.println("7 " + wordPattern(pattern7, s7));
+        System.out.println("8 " + wordPattern(pattern8, s8));
     }
 
     public static boolean wordPattern(String pattern, String s){
         StringBuilder sb = new StringBuilder();
-        Map<Character, String> map = new HashMap<>();
+        Map<String, Character> map = new HashMap<>();
         int j = 0;
-//
-//        if(pattern.equals(s) && pattern.length()>1)
-//            return false;
 
         for (int i = 0; i < s.length(); i++) {
-            if (j == pattern.length())
-                return false;
             if (s.charAt(i) != ' '){
                 sb.append(s.charAt(i));
             } else {
-                if (!map.containsKey(pattern.charAt(j)) && map.containsValue(sb.toString()))
-                    return false;
-
-                if (map.get(pattern.charAt(j)) == null) {
-                    map.put(pattern.charAt(j), sb.toString());
-                    sb.delete(0, sb.length());
-                    if (j < pattern.length() ) {
-                        j++;
-                    }
-                    continue;
-                }
-                if (map.get(pattern.charAt(j)).equals(sb.toString())) {
-                    sb.delete(0, sb.length());
-                    if (j < pattern.length() ) {
-                        j++;
-                    }
-                    continue;
-                }
-                if (!map.get(pattern.charAt(j)).equals(sb.toString())){
-                    return false;
-                }
+//                if (!map.containsKey(sb.toString()))
             }
         }
-
-        if (j == pattern.length()-1) {
-            if (!map.containsKey(pattern.charAt(j)) && map.containsValue(sb.toString()))
-                return false;
-
-            if (map.get(pattern.charAt(j)) == null || map.get(pattern.charAt(j)).equals(sb.toString())) {
-                return true;
-            }
-        }
-
         return false;
     }
 
